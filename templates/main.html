@@ -3,7 +3,24 @@
     <head>
         <meta charset="utf-8">
         <title>WebRate</title>
-        <link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{ url_for('static',filename='images/star.png')}}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+        <!-- personal css file -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='images/star.png')}}">
+        
     </head>
+
+<body>
+
+        <div class="text-center fixed-centre" role="group" aria-label="Basic example">
+            <input type="text" placeholder="What are your looking for?" class="btn-group2">
+            <button type="submit" class="btn-form rounded bg-primary text-white">SEARCH<i class="pe-7s-angle-right"></i></button>
+        </div>
+
+</body>
+
+
+
 </html>  
