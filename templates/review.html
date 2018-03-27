@@ -3,15 +3,15 @@
 <br>
 <div class="bd-example">
     <h3>Write Review of Website</h3>
-    <form>
+    <form method="POST" action="/review">
         <div class="form-group">
             <label for="exampleInputEmail1">Website</label>
-            <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Website.com">
+            <input class="form-control" name="website" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Website.com">
             
         </div>
         <div class="form-group">
                 <label for="exampleFormControlTextarea1">Your Review</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your review to help others learn about Website"></textarea>
+                <textarea class="form-control" name="user_review" id="exampleFormControlTextarea1" rows="3" placeholder="Write your review to help others learn about Website"></textarea>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your review with anyone else.</small>
         </div>
         <div class="form-check">
@@ -21,5 +21,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-Test
 {% endblock %}
