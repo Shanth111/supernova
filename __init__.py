@@ -9,8 +9,23 @@ app = Flask(__name__)
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def homepage():
+    if request.method == 'POST':
+        search = request.form['search']
+        print(search)
+        
+        c, conn = connection()
+        c.execute("SELECT review FROM review WHERE webname='"+search+"'")
+        data = c.fetchall()
+        print(data)
+        #conn.commit()
+
+        c.close()
+        conn.close()
+        gc.collect()
+        
+        return render_template('review.html')
     return render_template('main.html')
 
 @app.route('/review', methods=['GET','POST'])
