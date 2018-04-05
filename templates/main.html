@@ -4,21 +4,27 @@
         <meta charset="utf-8">
         <title>WebRate</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
-        <!-- personal css file -->
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css')}}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900">
         <link rel="shortcut icon" href="{{ url_for('static',filename='images/star.png')}}">
-        
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+   
     </head>
 
     <body>
         <form method="post">
-        <div class="input-group mb-3">
+        <div id="ktn" class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Website.com" name="search">
             <button class="btn btn-primary" type="Submit" value="Submit">Search</button>
         </div>
         </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="display-4 text-center">How Strong is your Website?</h1>
+                </div>
+            </div>
+        </div>
     </body>
 
 
