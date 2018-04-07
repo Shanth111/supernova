@@ -57,12 +57,6 @@ with open('review.csv', 'wb') as reviewfile:
         site_name = tree.xpath('//*[@id="prodTitle1"]/a/text()')
         page = tree.xpath('//*[@id="spnPaging"]/li[last()]/a/text()')
 
-        r = requests.post("https://www.mouthshut.com/review/CorporateResponse.ashx", data={'reviewid': '2531646'})
-        data = r.content
-        print(data)
-
-        with open('somefile.html', 'a') as the_file:
-            the_file.write(data)
 
         # for k in range(20):
         #     #review_name = tree.xpath('//*[@id="ctl00_ctl00_ContentPlaceHolderFooter_ContentPlaceHolderBody_rptreviews_ctl%02d_divProfile"]/p[1]/a/text()'%k)
