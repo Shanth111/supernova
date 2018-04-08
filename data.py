@@ -1,6 +1,7 @@
 from lxml import html
 from csv import writer
 import requests
+import lxml
 
 page = requests.get('https://www.mouthshut.com/online-shopping')
 tree = html.fromstring(page.content)
@@ -89,7 +90,10 @@ with open('review.csv', 'wb') as reviewfile:
                 headers = {'Cookie':imp_cookies}
                 r = requests.post("https://www.mouthshut.com/review/CorporateResponse.ashx", data=payload, headers=headers)
 
-                wood = html.fromstring(r.content)
+                try:
+                    wood = html.fromstring(r.content)
+                except lxml.etree.ParserError:
+                    continue
                 full_review = wood.xpath('//p/text()')
 
                 #print(page)
