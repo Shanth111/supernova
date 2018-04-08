@@ -28,7 +28,7 @@ with requests.session() as s:
                     'catid':f[4],
                     'catname':f[8].replace("'",''),
                     'type':'review'}
-        print(payload)
+
         # payload ={  'catid':'925899269',
         #         'catname':'Gingercrush.com',
         #         'corp':'false',
@@ -36,17 +36,17 @@ with requests.session() as s:
         #         'type':'review'}
         
         #print(asp_id)
-        cook = 'G_ENABLED_IDPS=google; ASP.NET_SessionId='+asp_id+'; _ga=GA1.2.1769419155.1521903843; _gid=GA1.2.1585595577.1523110523; _gat=1; CookieRecentVistedProducts=925899269,925903197,925917784,925028487,925076148,925000495,925038892,925054035; CookieBadge=1'
+        imp_cookies = 'G_ENABLED_IDPS=google; ASP.NET_SessionId='+asp_id+'; _ga=GA1.2.1769419155.1521903843; _gid=GA1.2.1585595577.1523110523; _gat=1; CookieRecentVistedProducts=925899269,925903197,925917784,925028487,925076148,925000495,925038892,925054035; CookieBadge=1'
         #print(str(cook))
-        headers = {'Cookie':cook}
+        headers = {'Cookie':imp_cookies}
         #print(headers)
         r = requests.post("https://www.mouthshut.com/review/CorporateResponse.ashx", data=payload, headers=headers)
 
-        print(r.status_code)
-        print(r.text)
+
         #print(r.content)
 
 
-        with open('somefile.html', 'a') as the_file:
-            the_file.write(r.content)
 
+        tree = html.fromstring(r.content)
+        data = tree.xpath('//p/text()')
+        print(data)
