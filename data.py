@@ -10,7 +10,7 @@ links = []
 
 with open('webrate.csv', 'wb') as csvfile:
     csv = writer(csvfile)
-    for site_row in range(1,2):
+    for site_row in range(1,42):
         website = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[1]/a/text()'%site_row)
         weblink = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[1]/a/@href'%site_row)
         no_review = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[2]/div[3]/a/text()'%site_row)
@@ -102,7 +102,7 @@ with open('review.csv', 'wb') as reviewfile:
                 full_review = wood.xpath('//p/text()')
 
                 try:
-                    review_data = [site_name[0],review_title[0].encode('utf-8'),full_review[0].encode('utf-8')]
+                    review_data = [site_name[0],review_title[0].encode('utf-8')," ".join(full_review).encode('utf-8')]
                 except IndexError:
                     continue
 
@@ -152,7 +152,7 @@ with open('review.csv', 'wb') as reviewfile:
                 full_review = wood.xpath('//p/text()')
 
                 try:
-                    review_data = [site_name[0],review_title[0].encode('utf-8'),full_review[0].encode('utf-8')]
+                    review_data = [site_name[0],review_title[0].encode('utf-8')," ".join(full_review).encode('utf-8')]
                 except IndexError:
                     continue
 

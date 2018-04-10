@@ -2,6 +2,7 @@ from lxml import html
 from csv import writer
 from csv import reader
 import requests
+import lxml
 
 with open('webrate.csv', 'rb') as f:
     reader = reader(f)
@@ -11,7 +12,7 @@ with open('webrate.csv', 'rb') as f:
 
 for website in links:
     link = website[1]
-    file_name = 'Data/'+website[0].replace('.','_')+'.csv'
+    file_name = 'Data/'+website[0].replace('.','_').replace('/','')+'.csv'
     with open(file_name, 'wb') as reviewfile:
         csv = writer(reviewfile)
         with requests.session() as s:
@@ -25,7 +26,7 @@ for website in links:
             asp_id = cookies['ASP.NET_SessionId']
             imp_cookies = 'G_ENABLED_IDPS=google; ASP.NET_SessionId='+asp_id+'; _ga=GA1.2.1769419155.1521903843; _gid=GA1.2.1585595577.1523110523; _gat=1; CookieRecentVistedProducts=925899269,925903197,925917784,925028487,925076148,925000495,925038892,925054035; CookieBadge=1'
             headers = {'Cookie':imp_cookies}
-            print('Cookie-'+asp_id)
+            print(asp_id)
 
             for review_no in range(20):
                 review_title = tree.xpath('//*[@id="ctl00_ctl00_ContentPlaceHolderFooter_ContentPlaceHolderBody_rptreviews_ctl%02d_lnkTitle"]/text()'%review_no)
@@ -63,7 +64,7 @@ for website in links:
                 full_review = wood.xpath('//p/text()')
 
                 try:
-                    review_data = [site_name[0],review_title[0].encode('utf-8'),full_review[0].encode('utf-8')]
+                    review_data = [site_name[0],review_title[0].encode('utf-8')," ".join(full_review).encode('utf-8')]
                 except IndexError:
                     continue
 
@@ -113,7 +114,7 @@ for website in links:
                 full_review = wood.xpath('//p/text()')
 
                 try:
-                    review_data = [site_name[0],review_title[0].encode('utf-8'),full_review[0].encode('utf-8')]
+                    review_data = [site_name[0],review_title[0].encode('utf-8')," ".join(full_review).encode('utf-8')]
                 except IndexError:
                     continue
 

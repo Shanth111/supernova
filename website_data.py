@@ -7,7 +7,7 @@ tree = html.fromstring(page.content)
 
 with open('webrate.csv', 'wb') as csvfile:
     csv = writer(csvfile)
-    for site_row in range(1,2):
+    for site_row in range(1,42):
         website = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[1]/a/text()'%site_row)
         weblink = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[1]/a/@href'%site_row)
         no_review = tree.xpath('//*[@id="categorierightpanel"]/div/div[3]/div[1]/div[%d]/div[2]/div[2]/div[3]/a/text()'%site_row)
