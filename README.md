@@ -1,7 +1,7 @@
 # supernova
 
-review_data-2.33sec/review
-
+review_data-2.33review/sec
+mrthomas.in
 
 ## mysql server
 Installing MySQL
