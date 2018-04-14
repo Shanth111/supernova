@@ -29,3 +29,7 @@ phpmyadmin
 ```
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
 ```
+Apache restart
+```
+sudo systemctl restart apache2
+```
