@@ -21,3 +21,11 @@ MySQL Connection Python
 ```
 https://stackoverflow.com/questions/25865270/how-to-install-python-mysqldb-module-using-pip
 ```
+Mysql password change
+```
+https://www.techrepublic.com/article/how-to-set-change-and-recover-a-mysql-root-password/
+```
+phpmyadmin
+```
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
+```
