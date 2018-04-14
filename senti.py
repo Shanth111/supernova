@@ -7,10 +7,12 @@ import os
 
 
 files = os.listdir('Data/review_data')
+
 for page in files:
     file_name = 'Data/Sentiment/'+page
     with open(file_name,'wb') as final:
         csv = writer(final)
+        
         print(file_name)
         with open('Data/review_data/'+page,'rb') as reviewfile:
             read_f = reader(reviewfile)
