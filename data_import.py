@@ -18,9 +18,9 @@ for senti_file in files:
           """(webname VARCHAR(80) NOT NULL,\
               review_head VARCHAR(500),\
               review_data VARCHAR(20000),\
-              review_head_senti DOUBLE,\
-              review_data_senti DOUBLE,\
-              total_senti DOUBLE)"""
+              review_head_senti FLOAT,\
+              review_data_senti FLOAT,\
+              total_senti FLOAT)"""
     c.execute(sql)
     conn.commit()
 
