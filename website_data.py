@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from lxml import html
 from csv import writer
 import requests

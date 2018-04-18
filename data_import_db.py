@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from dbconn import connection
 from csv import reader
 import gc
