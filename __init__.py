@@ -9,8 +9,8 @@ import gc
 app = Flask(__name__)
 
 @app.route('/result',methods=['GET','POST'])
-def result(search,pol):
-    return render_template('result.html',search=search,pol=pol)
+def result():
+    return render_template('result.html',webname=request.args.get('webname'),message=request.args.get('message'))
 
 
 @app.route('/review', methods=['GET','POST'])
@@ -35,9 +35,9 @@ def review():
 def homepage():
     if request.method == 'POST':
         search = request.form['search']
-        avg = sentiment(search)
-        print(avg)
-        return render_template('result.html')
+        senti = sentiment(search)
+        print(senti)
+        return redirect(url_for('result',webname=search.title(),message=str(int(senti[2]))))
 
     return render_template('index.html')
     

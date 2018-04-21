@@ -1,8 +1,5 @@
 
 
-/* body {
-    background-color: rgb(26, 25, 25) !important;
-} */
 
 .ketan {
     width: 50%;
@@ -11,7 +8,14 @@
 }
 
 
-h1 {
+.container {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1-ktn {
 	font-family: Arial Black, Arial Bold, Gadget, sans-serif;
 	font-size: 67px;
 	font-style: normal;
@@ -22,17 +26,29 @@ h1 {
     margin-top: 10%;
     margin-left: 20%;
 }
+.h2-ktn{
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+	font-size: 67px !important;    
+    margin: auto;
+    margin-top: 4%;
+    font-weight: 700;
+}
+
+.circle-ktn{
+    margin-top: 5%;
+    margin-left: 36%;
+}
 
 #myProgress {
     width: 100%;
     background-color: #ddd;
   }
   
-  #myBar {
+#myBar {
     width: 0%;
     height: 30px;
     background-color: #4CAF50;
     text-align: center;
     line-height: 30px;
     color: white;
-  }
+}

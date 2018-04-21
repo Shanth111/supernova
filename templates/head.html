@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/circle.css')}}">
     <link rel="shortcut icon" href="{{ url_for('static',filename='images/star.png')}}">    
-    <script src="{{ url_for('static',filename='js/style.js')}}"></script>
+    <script src="#"></script>
 </head>
 
 <header>
@@ -27,6 +28,24 @@
     <div class="container-fluid" style="min-height:100%" width:80%>
         {%block body %}{% endblock %}
     </div>
+
+<script>
+    function move() {
+    var elem = document.getElementById("myBar");   
+    var width = 0;
+    var id = setInterval(frame, 40);
+    function frame() {
+      if (width >= 80) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1  + '%';
+      }
+    }
+  }
+</script>
+
 </body>
 
 </html>
