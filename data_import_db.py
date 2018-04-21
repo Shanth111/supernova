@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from table_name import table_name_csv
 from dbconn import connection
 from csv import reader
 import gc
@@ -10,9 +10,9 @@ import os
 files = os.listdir('Data/Sentiment/')
 
 for senti_file in files:
-    print(senti_file)
     file_name = 'Data/Sentiment/'+senti_file
-    table_name = senti_file.replace('.csv','').replace(' ','').replace('-','')
+    table_name = table_name_csv(senti_file)
+    print(table_name)
     c, conn = connection()
     c.execute("DROP TABLE IF EXISTS "+table_name)
 
@@ -20,9 +20,9 @@ for senti_file in files:
           """(webname VARCHAR(80) NOT NULL,\
               review_head VARCHAR(500),\
               review_data VARCHAR(20000),\
-              review_head_senti FLOAT,\
-              review_data_senti FLOAT,\
-              total_senti FLOAT)"""
+              review_head_senti DOUBLE,\
+              review_data_senti DOUBLE,\
+              total_senti DOUBLE)"""
     c.execute(sql)
     conn.commit()
 
