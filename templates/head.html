@@ -1,0 +1,32 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebRate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/style.css')}}">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/star.png')}}">    
+    <script src="{{ url_for('static',filename='js/style.js')}}"></script>
+</head>
+
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('homepage')}}">
+            <img src="{{ url_for('static',filename='images/www.png')}}" width="30" height="30" alt="">
+        </a>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Website.com" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+    </nav>    
+</header>
+
+<body>
+    <div class="container-fluid" style="min-height:100%" width:80%>
+        {%block body %}{% endblock %}
+    </div>
+</body>
+
+</html>

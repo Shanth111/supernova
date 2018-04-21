@@ -1,5 +1,38 @@
 
 
-body {
+/* body {
     background-color: rgb(26, 25, 25) !important;
+} */
+
+.ketan {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
 }
+
+
+h1 {
+	font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+	font-size: 67px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+    line-height: 56.4px;
+    margin: auto;
+    margin-top: 10%;
+    margin-left: 20%;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: #ddd;
+  }
+  
+  #myBar {
+    width: 0%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }

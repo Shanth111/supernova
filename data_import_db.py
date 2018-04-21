@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from table_name import table_name_csv
+from table_name import table_name
 from dbconn import connection
 from csv import reader
 import gc
@@ -11,7 +11,7 @@ files = os.listdir('Data/Sentiment/')
 
 for senti_file in files:
     file_name = 'Data/Sentiment/'+senti_file
-    table_name = table_name_csv(senti_file)
+    table_name = table_name(senti_file)
     print(table_name)
     c, conn = connection()
     c.execute("DROP TABLE IF EXISTS "+table_name)

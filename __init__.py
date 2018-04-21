@@ -1,39 +1,14 @@
 from flask import Flask,render_template,request,url_for,redirect
+from website_sentiment_db import sentiment
 from MySQLdb import escape_string as thwart
 from dbconn import connection
 from textblob import TextBlob
-#from opinion import opinion
 import gc
 
 
 app = Flask(__name__)
 
-
-
-@app.route('/', methods=['GET','POST'])
-def homepage():
-    if request.method == 'POST':
-        search = request.form['search']
-
-        c, conn = connection()
-        c.execute("SELECT review FROM review WHERE webname='"+search+"'")
-        data = c.fetchall()
-        #conn.commit()
-
-        c.close()
-        conn.close()
-        gc.collect()
-# Other File
-        pol = 0
-        for rd in data:
-            blob = TextBlob(str(rd))
-            pol = pol + blob.sentiment.polarity*100
-            print(pol)
-# Other File 
-        return redirect(url_for('result',search=search,pol=pol))
-    return render_template('main.html')
-
-@app.route('/result/<search>/<pol>/',methods=['GET','POST'])
+@app.route('/result',methods=['GET','POST'])
 def result(search,pol):
     return render_template('result.html',search=search,pol=pol)
 
@@ -56,6 +31,18 @@ def review():
         
     return render_template('review.html')
 
+@app.route('/', methods=['GET','POST'])
+def homepage():
+    if request.method == 'POST':
+        search = request.form['search']
+        avg = sentiment(search)
+        print(avg)
+        return render_template('result.html')
+
+    return render_template('index.html')
     
+# Main Method
 if __name__ == '__main__':
-    app.run()
+    app.secret_key = 'super_secret_key'
+    app.debug = True
+    app.run(host='127.0.0.1', port=5000)

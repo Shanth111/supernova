@@ -29,6 +29,6 @@ def sentiment(site='Amazon.com'):
         conn.close()
         gc.collect()
 
-        return(senti,row)
+        return(senti,row,avg)
 
 
