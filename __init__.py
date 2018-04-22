@@ -2,7 +2,10 @@
 
 from flask import Flask,render_template,request,url_for,redirect
 from MySQLdb import escape_string as thwart
+from website_sentiment_db import review_sentiment_update
 from website_sentiment_db import sentiment
+from table_name import website_list
+from table_name import table_name
 from formula import popularity_value
 from formula import senti_value
 from dbconn import connection
@@ -12,23 +15,25 @@ import gc
 
 app = Flask(__name__)
 
-@app.route('/about',methods=['GET'])
+
+@app.route('/aboutus',methods=['GET'])
 def about():
     return render_template('about.html')
+
+@app.route('/aboutus/more', methods=['GET'])
+def more():
+    return render_template('more.html')
 
 @app.route('/review', methods=['GET','POST'])
 def review():
     if request.method == 'POST':
         website = request.form['website']
         user_review = request.form['user_review']
-        c, conn = connection()
 
-        c.execute("INSERT INTO review (webname,review) VALUES(%s,%s)", (thwart(website),thwart(user_review)))
-        conn.commit()
-
-        c.close()
-        conn.close()
-        gc.collect()
+        if website.lower() in website_list():
+            review_sentiment_update([table_name(website),website,'',user_review])
+        else:
+            print('Not Found')
         
         return render_template('review.html')
         

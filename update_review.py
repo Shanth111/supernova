@@ -10,7 +10,7 @@ import requests
 import lxml
 import gc
 
-with open('webrate_am.csv', 'rb') as f:
+with open('webrate.csv', 'rb') as f:
     reader = reader(f)
     links = list(reader)
 

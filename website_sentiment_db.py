@@ -32,7 +32,7 @@ def sentiment(site='Amazon.com'):
 
         return(row,avg)
 
-def review_sentiment_update(review):
+def review_sentiment_update(review):#review[table_name,website_name,review_head,review_data]
 
     review_head = TextBlob(review[2].decode('utf-8'))
     review_data = TextBlob(review[3].decode('utf-8'))
