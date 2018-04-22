@@ -18,8 +18,8 @@
         <a class="navbar-brand" href="{{ url_for('homepage')}}">
             <img src="{{ url_for('static',filename='images/www.png')}}" width="30" height="30" alt="">
         </a>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Website.com" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="POST">
+        <input class="form-control mr-sm-2" type="search" placeholder="Website.com" aria-label="Search" name="search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
     </nav>    

@@ -16,12 +16,26 @@ import gc
 app = Flask(__name__)
 
 
-@app.route('/aboutus',methods=['GET'])
+@app.route('/aboutus',methods=['GET','POST'])
 def about():
+    if request.method == 'POST':
+        search = request.form['search']
+        senti = sentiment(search)
+        popularity = popularity_value(senti[0])
+        opinion = senti_value(senti[1])
+        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
+
     return render_template('about.html')
 
-@app.route('/aboutus/more', methods=['GET'])
+@app.route('/aboutus/more', methods=['GET','POST'])
 def more():
+    if request.method == 'POST':
+        search = request.form['search']
+        senti = sentiment(search)
+        popularity = popularity_value(senti[0])
+        opinion = senti_value(senti[1])
+        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
+
     return render_template('more.html')
 
 @app.route('/review', methods=['GET','POST'])
@@ -38,9 +52,17 @@ def review():
         return render_template('review.html')
         
     return render_template('review.html')
+    
 
 @app.route('/result',methods=['GET','POST'])
 def result():
+    if request.method == 'POST':
+        search = request.form['search']
+        senti = sentiment(search)
+        popularity = popularity_value(senti[0])
+        opinion = senti_value(senti[1])
+        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
+        
     return render_template('result.html',webname=request.args.get('webname'),\
             popularity=request.args.get('popularity'),opinion=request.args.get('opinion'))
 
