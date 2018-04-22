@@ -35,7 +35,7 @@
     var width = 0;
     var id = setInterval(frame, 40);
     function frame() {
-      if (width >= 80) {
+      if (width >= {{popularity}}) {
         clearInterval(id);
       } else {
         width++; 
@@ -44,6 +44,8 @@
       }
     }
   }
+
+  window.onload = move();
 </script>
 
 </body>

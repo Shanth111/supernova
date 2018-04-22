@@ -34,6 +34,10 @@
     font-weight: 700;
 }
 
+.about-ktn{
+    margin-top: 2%;
+}
+
 .circle-ktn{
     margin-top: 5%;
     margin-left: 36%;
@@ -47,8 +51,9 @@
 #myBar {
     width: 0%;
     height: 30px;
-    background-color: #4CAF50;
+    background-color: #428bca;
     text-align: center;
     line-height: 30px;
     color: white;
 }
+

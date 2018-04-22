@@ -1,11 +1,12 @@
 {% extends 'head.html' %}
 {% block body %}
+
 <div class="h2-ktn text-center">
     <h2>{{webname}}</h2>
 </div>
 <div class="clearfix container">
-    <div class="c100 p{{message}} big">
-        <span>{{message}}%</span>
+    <div class="c100 p{{opinion}} big">
+        <span>{{opinion}}%</span>
         <div class="slice">
             <div class="bar"></div>
             <div class="fill"></div>
@@ -13,17 +14,17 @@
     </div>
 </div>
 
-<!-- 
-<div class="progress">
+<!-- <div class="progress">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-</div>
+</div> -->
 
 <div id="myProgress">
     <div id="myBar" class="progress-bar-striped progress-bar-animated">0%</div>
 </div>
 
 
-<br>
-<button onclick="move()">Click Me</button>  -->
+<!-- <br>
+<button onclick="move()">Click Me</button> -->
+
 
 {% endblock %}
