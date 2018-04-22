@@ -8,6 +8,11 @@ def rate(oldmax,oldmin,newmax,newmin,value):
         new_value = (((value-oldmin)*newrange)/oldrange)+newmin
         return(new_value)
 
+def avgrate(opinion,popularity):
+    print(opinion)
+    avg = (opinion+popularity)/2
+    return(int(avg))
+
 # Value Methods
 def senti_value(value):
     oldmax = 200

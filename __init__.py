@@ -8,35 +8,13 @@ from table_name import website_list
 from table_name import table_name
 from formula import popularity_value
 from formula import senti_value
+from formula import avgrate
 from dbconn import connection
 from textblob import TextBlob
 import gc
 
 
 app = Flask(__name__)
-
-
-@app.route('/aboutus',methods=['GET','POST'])
-def about():
-    if request.method == 'POST':
-        search = request.form['search']
-        senti = sentiment(search)
-        popularity = popularity_value(senti[0])
-        opinion = senti_value(senti[1])
-        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
-
-    return render_template('about.html')
-
-@app.route('/aboutus/more', methods=['GET','POST'])
-def more():
-    if request.method == 'POST':
-        search = request.form['search']
-        senti = sentiment(search)
-        popularity = popularity_value(senti[0])
-        opinion = senti_value(senti[1])
-        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
-
-    return render_template('more.html')
 
 @app.route('/review', methods=['GET','POST'])
 def review():
@@ -52,6 +30,37 @@ def review():
         return render_template('review.html')
         
     return render_template('review.html')
+
+@app.errorhandler(400)
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html')
+
+@app.route('/aboutus',methods=['GET','POST'])
+def about():
+    if request.method == 'POST':
+        search = request.form['search']
+        senti = sentiment(search)
+        popularity = popularity_value(senti[0])
+        opinion = senti_value(senti[1])
+        allvalue = avgrate(opinion,popularity)        
+        return redirect(url_for('result',webname=search.title(),allvalue=int(allvalue),\
+                popularity=int(popularity),opinion=str(int(opinion))))
+
+    return render_template('about.html')
+
+@app.route('/aboutus/more', methods=['GET','POST'])
+def more():
+    if request.method == 'POST':
+        search = request.form['search']
+        senti = sentiment(search)
+        popularity = popularity_value(senti[0])
+        opinion = senti_value(senti[1])
+        allvalue = avgrate(opinion,popularity)        
+        return redirect(url_for('result',webname=search.title(),allvalue=int(allvalue),\
+                popularity=int(popularity),opinion=str(int(opinion))))
+
+    return render_template('more.html')
     
 
 @app.route('/result',methods=['GET','POST'])
@@ -61,9 +70,11 @@ def result():
         senti = sentiment(search)
         popularity = popularity_value(senti[0])
         opinion = senti_value(senti[1])
-        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
+        allvalue = avgrate(opinion,popularity)
+        return redirect(url_for('result',webname=search.title(),allvalue=int(allvalue),\
+                popularity=int(popularity),opinion=str(int(opinion))))
         
-    return render_template('result.html',webname=request.args.get('webname'),\
+    return render_template('result.html',webname=request.args.get('webname'),allvalue=request.args.get('allvalue'),\
             popularity=request.args.get('popularity'),opinion=request.args.get('opinion'))
 
 
@@ -74,12 +85,15 @@ def homepage():
         senti = sentiment(search)
         popularity = popularity_value(senti[0])
         opinion = senti_value(senti[1])
-        return redirect(url_for('result',webname=search.title(),popularity=int(popularity),opinion=str(int(opinion))))
+        print(opinion)
+        allvalue = avgrate(opinion,popularity)        
+        return redirect(url_for('result',webname=search.title(),allvalue=int(allvalue),\
+                popularity=int(popularity),opinion=str(int(opinion))))
 
     return render_template('index.html')
     
 # Main Method
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
-    app.debug = True
+    #app.debug = True
     app.run(host='127.0.0.1', port=5000)

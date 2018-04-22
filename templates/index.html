@@ -37,12 +37,28 @@
             </div>
             <input type="text" class="form-control" placeholder="Website.com" name="search">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="Submit">Search</button>
+                <button class="btn btn-primary" type="Submit" onclick="website_validation()">Search</button>
             </div>
         </div>
     </form>
 
+<script>
+    function website_validation() {
+        var x, text;
     
+        // Get the value of the input field with id="numb"
+        x = document.getElementById("numb").value;
+    
+        // If x is Not a Number or less than one or greater than 10
+        if (isNaN(x) || x < 1 || x > 10) {
+            text = "Input not valid";
+        } else {
+            text = "Input OK";
+        }
+        document.getElementById("demo").innerHTML = text;
+    }
+</script>
+
 </body>
 
 </html>
