@@ -9,7 +9,7 @@
 
 
 .container {
-    height: 60%;
+    margin-top: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,8 +30,16 @@
     font-family: Arial Black, Arial Bold, Gadget, sans-serif;
 	font-size: 67px !important;    
     margin: auto;
-    margin-top: 4%;
+    margin-top: 2%;
     font-weight: 700;
+}
+
+.btn-ktn-collapse{
+    margin-top: 2%;
+}
+
+.nav-ktn{
+    margin-top: 2%;
 }
 
 .about-ktn{
@@ -48,7 +56,7 @@
     background-color: #ddd;
   }
   
-#myBar {
+#myBarop {
     width: 0%;
     height: 30px;
     background-color: #428bca;
@@ -57,3 +65,16 @@
     color: white;
 }
 
+#myBarpo {
+    width: 0%;
+    height: 30px;
+    background-color: #428bca;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+.pro-ktn{
+    margin-left: 5%;
+    margin-right: 5%;
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/style.css')}}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/circle.css')}}">
     <link rel="shortcut icon" href="{{ url_for('static',filename='images/star.png')}}">    
-    <script src="#"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 </head>
 
 <header>
@@ -30,8 +30,23 @@
     </div>
 
 <script>
-    function move() {
-    var elem = document.getElementById("myBar");   
+    function moveop() {
+    var elem = document.getElementById("myBarop");   
+    var width = 0;
+    var id = setInterval(frame, 40);
+    function frame() {
+      if (width >= {{opinion}}) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1 ;
+      }
+    }
+  }
+
+    function movepo() {
+    var elem = document.getElementById("myBarpo");   
     var width = 0;
     var id = setInterval(frame, 40);
     function frame() {
@@ -40,12 +55,14 @@
       } else {
         width++; 
         elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
+        elem.innerHTML = width * 1 ;
       }
     }
   }
 
-  window.onload = move();
+  window.onload = movepo();
+  window.onload = moveop();  
+  
 </script>
 
 </body>
